@@ -10,3 +10,4 @@ SPACE_CADET_ENABLE = no
 
 # Custom QMK here
 KEY_OVERRIDE_ENABLE = yes
+SRC += features/achordion.c
