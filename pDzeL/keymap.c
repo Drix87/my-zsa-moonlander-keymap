@@ -1,6 +1,7 @@
 // The core file where key mappings, macros, and all keyboard behavior are defined. This is where most customizations happen.
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "features/achordion.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
@@ -11,8 +12,6 @@ enum custom_keycodes {
   HSV_152_255_255,
 };
 
-
-
 enum tap_dance_codes {
   DANCE_0,
   DANCE_1,
@@ -22,6 +21,11 @@ enum tap_dance_codes {
   DANCE_5,
   DANCE_6,
 };
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_ESCAPE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_LPRN,                                        KC_RPRN,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
@@ -67,6 +71,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
+
   switch (keycode) {
 
     case RGB_SLD:
