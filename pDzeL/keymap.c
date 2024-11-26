@@ -1,3 +1,4 @@
+// The core file where key mappings, macros, and all keyboard behavior are defined. This is where most customizations happen.
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "i18n.h"
@@ -377,3 +378,5 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
         [DANCE_6] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_6, dance_6_finished, dance_6_reset),
 };
+
+// Custom QMK here
